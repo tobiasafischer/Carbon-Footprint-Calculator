@@ -6,7 +6,6 @@ body {
   font-size: 14px;
   -webkit-font-smoothing: antialiased; 
   height: 100%;
-  font-family: 'proxima-nova';
   color: #292E35;
   margin: 0;
 }
@@ -15,8 +14,12 @@ box-sizing: border-box;
 *,
 *:before,
 *:after {
-  font-family: 'proxima-nova';
+  font-family: 'Nunito', sans-serif;
   box-sizing: inherit;
+}
+
+.ant-layout {
+  background: white;
 }
 
 h1,
@@ -52,7 +55,6 @@ a {
 }
 
 input {
-  font-family: 'proxima-nova';
   font-weight: 500;
   size: 14px;
   color: #292e35;
