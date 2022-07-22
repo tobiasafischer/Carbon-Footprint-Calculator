@@ -12,13 +12,13 @@ import {
    CALCULATE_SNACKS,
    CALCULATE_VEGETABLES,
    CALCULATE_WHITE_MEAT,
-} from './queries'
+} from '../queries'
 
 const Totals = styled.div`
    display: flex;
    align-items: flex-start;
    flex-direction: column;
-   gap: 10px;
+   gap: 25px;
 `
 
 const SidePanel: React.FC<{ formData: any }> = ({ formData }) => {
@@ -67,7 +67,7 @@ const SidePanel: React.FC<{ formData: any }> = ({ formData }) => {
    }, [redMeat, whiteMeat, dairy, vegetables, snacks, drinks, fruit, cereals])
 
    return (
-      <Card style={{ width: '40%', height: '836px', borderRadius: '4px' }}>
+      <Card style={{ width: '40%', height: '900px', borderRadius: '4px' }}>
          <Totals>
             <h2>Your carbon footprint</h2>
             <h3>

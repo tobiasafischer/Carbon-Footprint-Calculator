@@ -9,13 +9,13 @@ import {
    CALCULATE_TAXI,
    CALCULATE_RAIL,
    CALCULATE_FLYING,
-} from './queries'
+} from '../queries'
 
 const Totals = styled.div`
    display: flex;
    align-items: flex-start;
    flex-direction: column;
-   gap: 10px;
+   gap: 25px;
 `
 
 const SidePanel: React.FC<{ formData: any }> = ({ formData }) => {

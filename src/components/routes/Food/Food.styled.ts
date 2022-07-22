@@ -22,4 +22,7 @@ export const Container = styled.div`
    gap: 20px;
    width: 100%;
    height: 100%;
+   h1 {
+      margin-bottom: 20px;
+   }
 `

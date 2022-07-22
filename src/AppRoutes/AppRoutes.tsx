@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Housing, Transportation, Food } from '../components/routes'
-import MainLayout from './MainLayout'
+import { MainLayout } from './layouts'
 import { ROUTES } from './routes'
 
 const AppRoutes: React.FC = () => (
@@ -10,7 +10,7 @@ const AppRoutes: React.FC = () => (
          <Route path={ROUTES.housing} element={<Housing />} />
          <Route path={ROUTES.transportation} element={<Transportation />} />
          <Route path={ROUTES.food} element={<Food />} />
-         <Route path="*" element={<Food />} />
+         <Route path="*" element={<Housing />} />
       </Route>
    </Routes>
 )

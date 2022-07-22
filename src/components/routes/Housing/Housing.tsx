@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Card, InputNumber, Form, Button } from 'antd'
 
+import { SidePanel } from './components'
 import { CardContainer, Container } from './Housing.styled'
-import SidePanel from './SidePanel'
 
 const formItems = [
    {
@@ -35,24 +35,23 @@ const formItems = [
 
 const Housing: React.FC = () => {
    const [form] = Form.useForm()
-   const [formData, setFormData] = useState(null)
+   const [formData, setFormData] = useState({})
 
-   const onFinish = (formRes: any) => {
-      setFormData(formRes)
-   }
+   const onFinish = (formRes: any) => setFormData(formRes)
+
    return (
       <Container>
          <Card style={{ height: '836px', width: '100%', borderRadius: '4px' }}>
-            <h1>Calculate Food Carbon Footprint</h1>
+            <h1>Calculate Housing Carbon Footprint</h1>
             <CardContainer>
                <Form form={form} onFinish={onFinish}>
                   {formItems.map(({ name, title, emoji }) => (
-                     <>
+                     <React.Fragment key={name}>
                         <p>{`${emoji} ${title}`}</p>
                         <Form.Item name={name}>
-                           <InputNumber />
+                           <InputNumber data-testid={title} />
                         </Form.Item>
-                     </>
+                     </React.Fragment>
                   ))}
                   <Button htmlType="submit" size="large">
                      Submit
@@ -60,7 +59,7 @@ const Housing: React.FC = () => {
                </Form>
             </CardContainer>
          </Card>
-         <SidePanel formData={formData || {}} />
+         <SidePanel formData={formData} />
       </Container>
    )
 }

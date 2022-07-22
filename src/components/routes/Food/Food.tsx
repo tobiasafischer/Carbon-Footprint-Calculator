@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Card, InputNumber, Form, Button } from 'antd'
 
+import { SidePanel } from './components'
 import { CardContainer, Container } from './Food.styled'
-import SidePanel from './SidePanel'
 
 const formItems = [
    {
@@ -37,9 +37,8 @@ const Food: React.FC = () => {
    const [form] = Form.useForm()
    const [formData, setFormData] = useState(null)
 
-   const onFinish = (formRes: any) => {
-      setFormData(formRes)
-   }
+   const onFinish = (formRes: any) => setFormData(formRes)
+
    return (
       <Container>
          <Card style={{ width: '100%', borderRadius: '4px' }}>
@@ -47,12 +46,12 @@ const Food: React.FC = () => {
             <CardContainer>
                <Form form={form} onFinish={onFinish}>
                   {formItems.map(({ name, title, emoji }) => (
-                     <>
+                     <React.Fragment key={title}>
                         <p>{`${emoji} ${title}`}</p>
                         <Form.Item name={name}>
-                           <InputNumber />
+                           <InputNumber data-testid={title} />
                         </Form.Item>
-                     </>
+                     </React.Fragment>
                   ))}
                   <Button htmlType="submit" size="large">
                      Submit
