@@ -48,8 +48,8 @@ const Food: React.FC = () => {
                   {formItems.map(({ name, title, emoji }) => (
                      <React.Fragment key={title}>
                         <p>{`${emoji} ${title}`}</p>
-                        <Form.Item name={name}>
-                           <InputNumber data-testid={title} />
+                        <Form.Item initialValue={0} name={name}>
+                           <InputNumber />
                         </Form.Item>
                      </React.Fragment>
                   ))}

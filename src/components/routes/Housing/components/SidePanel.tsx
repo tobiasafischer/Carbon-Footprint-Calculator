@@ -22,22 +22,22 @@ const SidePanel: React.FC<{ formData: any }> = ({ formData }) => {
    const [milesDriven, setMilesDriven] = useState(0)
    const [footprint, setFootprint] = useState(0)
    const { data: { electricity } = {} } = useQuery(CALCULATE_ELECTRICITY, {
-      variables: { miles: formData.electricity },
+      variables: { kWh: formData.electricity },
    })
    const { data: { naturalGas } = {} } = useQuery(CALCULATE_NATURAL_GAS, {
-      variables: { miles: formData.naturalGas },
+      variables: { therms: formData.naturalGas },
    })
    const { data: { fuelOil } = {} } = useQuery(CALCULATE_FUEL_OIL, {
-      variables: { miles: formData.fuelOil },
+      variables: { litres: formData.fuelOil },
    })
    const { data: { LPG } = {} } = useQuery(CALCULATE_LPG, {
-      variables: { miles: formData.LPG },
+      variables: { litres: formData.LPG },
    })
    const { data: { waste } = {} } = useQuery(CALCULATE_WASTE, {
-      variables: { miles: formData.waste },
+      variables: { kg: formData.waste },
    })
    const { data: { water } = {} } = useQuery(CALCULATE_WATER, {
-      variables: { miles: formData.water },
+      variables: { galons: formData.water },
    })
 
    const round = (num: number) => Math.round(num * 100) / 100
@@ -50,7 +50,7 @@ const SidePanel: React.FC<{ formData: any }> = ({ formData }) => {
          LPG?.footprint +
          water?.footprint +
          waste?.footprint
-      setFootprint(footprintTotal)
+      setFootprint(Math.round(footprintTotal))
       setMilesDriven(Math.round(footprintTotal * 0.196974607))
    }, [electricity, naturalGas, fuelOil, LPG, water, waste])
 

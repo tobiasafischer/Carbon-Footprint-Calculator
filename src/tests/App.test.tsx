@@ -1,9 +1,8 @@
 // @ts-nocheck
 import React from 'react'
-import { act, fireEvent, getByTestId, logRoles, render, screen } from '@testing-library/react'
+import { act, fireEvent, logRoles, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
-import { BrowserRouter, MemoryRouter } from 'react-router-dom'
 import App from '../App'
 
 global.matchMedia =
@@ -47,6 +46,9 @@ test('onSubmit Fires for Housing', () => {
       })
       fireEvent.click(getByText(/Submit/i))
       expect(onSubmit).toBeCalled()
+
+      expect(getByText(/This is equivalent to driving/i, { exact: false }).toHaveTextContent('13'))
+      expect(getByText(/🐄 Red Meat:/i, { exact: false }).toHaveTextContent('68.07'))
    })
 })
 
@@ -67,6 +69,9 @@ test('onSubmit Fires for Transportation', () => {
       })
       fireEvent.click(getByText(/Submit/i))
       expect(onSubmit).toBeCalled()
+
+      expect(getByText(/This is equivalent to driving/i, { exact: false }).toHaveTextContent('13'))
+      expect(getByText(/🏎️ Vehicle:/i, { exact: false }).toHaveTextContent('68.07'))
    })
 })
 

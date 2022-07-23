@@ -13,7 +13,7 @@ const typeDefs = gql`
       waste(kg: Float, isRecycled: Boolean, type: String): Footprint
       water(galons: Float): Footprint
 
-      vehicle(miles: Float, mpg: Float): Footprint
+      vehicle(miles: Float): Footprint
       bus(miles: Float): Footprint
       metro(miles: Float): Footprint
       taxi(miles: Float): Footprint

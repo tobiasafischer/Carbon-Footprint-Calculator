@@ -15,7 +15,7 @@ const Totals = styled.div`
    display: flex;
    align-items: flex-start;
    flex-direction: column;
-   gap: 25px;
+   gap: 10px;
 `
 
 const SidePanel: React.FC<{ formData: any }> = ({ formData }) => {
@@ -44,7 +44,12 @@ const SidePanel: React.FC<{ formData: any }> = ({ formData }) => {
 
    useEffect(() => {
       const footprintTotal =
-         bus?.footprint + metro?.footprint + taxi?.footprint + rail?.footprint + flying?.footprint
+         bus?.footprint +
+         metro?.footprint +
+         taxi?.footprint +
+         rail?.footprint +
+         flying?.footprint +
+         vehicle?.footprint
       setFootprint(footprintTotal)
       setMilesDriven(Math.round(footprintTotal * 0.196974607))
    }, [bus, metro, taxi, rail, flying])

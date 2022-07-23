@@ -62,7 +62,7 @@ const SidePanel: React.FC<{ formData: any }> = ({ formData }) => {
          fruit?.footprint +
          snacks?.footprint +
          drinks?.footprint
-      setFootprint(footprintTotal)
+      setFootprint(Math.round(footprintTotal))
       setMilesDriven(Math.round(footprintTotal * 0.196974607))
    }, [redMeat, whiteMeat, dairy, vegetables, snacks, drinks, fruit, cereals])
 

@@ -1,23 +1,23 @@
 const housing = {
-   electricity: (kWh) => ({ footprint: kWh * 0.7 }),
-   naturalGas: (therms) => ({ footprint: therms * 6.6 }),
-   fuelOil: (litres) => ({ footprint: litres * 11.6 }),
-   LPG: (litres) => ({ footprint: litres * 6.8 }),
-   waste: (kg) => ({ footprint: kg * 0.02 }),
+   electricity: (_, { kWh }) => ({ footprint: kWh * 0.7 }),
+   naturalGas: (_, { therms }) => ({ footprint: therms * 6.6 }),
+   fuelOil: (_, { litres }) => ({ footprint: litres * 11.6 }),
+   LPG: (_, { litres }) => ({ footprint: litres * 6.8 }),
+   waste: (_, { kg }) => ({ footprint: kg * 0.02 }),
    // so, this was a little confusing for me. I ended up referring to this https://www.usbr.gov/lc/socal/basinstudies/OWOWReferences/FinalReport/TM%202%20GHGE%20Calculator.pdf
    // On page 70, you can see the intensities table which combined together for NorCal in kWh/MG
    // is 1450 kWh/MG, then divided by 1 million to get the EF per gallon went to 0.00145 kWh/MG
-   water: (galons) => ({ footprint: galons * 0.00145 }),
+   water: (_, { galons }) => ({ footprint: galons * 0.00145 }),
 }
 
 const transportation = {
-   vehicle: (miles, mpg) => ({ footprint: miles * (8.78 / mpg + 1.55 / mpg) }),
-   bus: (miles) => ({ footprint: miles * 0.053 }), // average co2 emission per passenger/mile
-   metro: (miles) => ({ footprint: miles * 0.099 }), // avg co2 emission per passenger/ mile
-   taxi: (miles) => ({ footprint: miles * 0.4132 }), // taxi averaging 25 mpg
-   rail: (miles) => ({ footprint: miles * 0.113 }), // national average co2 emission
+   vehicle: (_, { miles }) => ({ footprint: miles * (8.78 / 30 + 1.55 / 30) }),
+   bus: (_, { miles }) => ({ footprint: miles * 0.053 }), // average co2 emission per passenger/mile
+   metro: (_, { miles }) => ({ footprint: miles * 0.099 }), // avg co2 emission per passenger/ mile
+   taxi: (_, { miles }) => ({ footprint: miles * 0.4132 }), // taxi averaging 25 mpg
+   rail: (_, { miles }) => ({ footprint: miles * 0.113 }), // national average co2 emission
    // using co2 emission for median air travel >= 300 miles <= 2300 miles
-   flying: (miles) => ({ footprint: miles * 1.09 * 0.133 }),
+   flying: (_, { miles }) => ({ footprint: miles * 1.09 * 0.133 }),
 }
 
 // a little confused on these factors, but i am using data from this graph

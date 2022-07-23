@@ -48,8 +48,8 @@ const Housing: React.FC = () => {
                   {formItems.map(({ name, title, emoji }) => (
                      <React.Fragment key={name}>
                         <p>{`${emoji} ${title}`}</p>
-                        <Form.Item name={name}>
-                           <InputNumber data-testid={title} />
+                        <Form.Item initialValue={0} name={name}>
+                           <InputNumber />
                         </Form.Item>
                      </React.Fragment>
                   ))}
@@ -59,7 +59,7 @@ const Housing: React.FC = () => {
                </Form>
             </CardContainer>
          </Card>
-         <SidePanel formData={formData} />
+         <SidePanel formData={formData || {}} />
       </Container>
    )
 }

@@ -34,7 +34,10 @@ const Transportation: React.FC = () => {
    const [form] = Form.useForm()
    const [formData, setFormData] = useState({})
 
-   const onFinish = (formRes: any) => setFormData(formRes)
+   const onFinish = (formRes: any) => {
+      console.log(formRes)
+      setFormData(formRes)
+   }
 
    return (
       <Container>
@@ -45,8 +48,8 @@ const Transportation: React.FC = () => {
                   {formItems.map(({ name, title, emoji }) => (
                      <React.Fragment key={title}>
                         <p>{`${emoji} ${title}`}</p>
-                        <Form.Item name={name}>
-                           <InputNumber data-testid={title} />
+                        <Form.Item initialValue={0} name={name}>
+                           <InputNumber />
                         </Form.Item>
                      </React.Fragment>
                   ))}
@@ -56,7 +59,7 @@ const Transportation: React.FC = () => {
                </Form>
             </CardContainer>
          </Card>
-         <SidePanel formData={formData} />
+         <SidePanel formData={formData || {}} />
       </Container>
    )
 }
